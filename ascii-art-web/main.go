@@ -1,31 +1,28 @@
 package main
 
 import (
-	"net/http"
+	"fmt"
 	"html/template"
+	"net/http"
 )
 
 var Tmpl = template.Must(
 	template.ParseFiles("templates/index.html"),
 )
 
-
-type Page struct{
-	Text string
-	Banner string
-}
 func homeHandler(w http.ResponseWriter, r *http.Request){
+	if r.Method == http.MethodGet{
+	Tmpl.ExecuteTemplate(w, "index.html", nil)
+		return
+	}
+	if r.Method == http.MethodPost{
+		Text := r.FormValue("text")
+		banner := r.FormValue("banner")
+		fmt.Println("text:", Text)
+		fmt.Println("banner:", banner)
+	}
 	Tmpl.ExecuteTemplate(w, "index.html", nil)
 }
-
-func pageHandler(w http.ResponseWriter, r *http.Request) {
-	page := Page{
-		Text: r.FormValue("text"),
-		Banner: r.FormValue("banner"),
-	}
-	Tmpl.ExecuteTemplate(w, "index.html", page)
-}
-
 
 func main() {
 	http.HandleFunc("/", homeHandler)

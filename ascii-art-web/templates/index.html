@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>ASCII Art Web</title>
-</head>
+    <head>
+        <title>Ascii Art Web</title> 
+    </head>
 <body>
+    <hi>Welcome To Ascii Art Web.</hi>
 
-    <h1>Welcome to ASCII Art Web</h1>
+    <form method="post"></form>
+    <textarea 
+    name="text"
+    rows="8"
+    cols="50"
+    placeholder="Please Enter Your Text Here...."
+     ></textarea>
+     <br><br>
 
-    <form method="post">
-
-        <textarea 
-        name="text"
-        rows="8"
-        cols="50"
-        placeholder="Enter Your text...">
-    </textarea>
-    <br><br>
-
-    <select name="banner">
+     <select name="banner">
         <option value="standard">Standard</option>
         <option value="shadow">Shadow</option>
         <option value="thinkertoy">Thinkertoy</option>
-    </select>
-    <br><br>
+     </select>
+     <br><br>
 
-    <button type="submit">
-        Generate
-    </button>
-    </form>
+     <button type="submit">Generate</button>
 </body>
 </html>
