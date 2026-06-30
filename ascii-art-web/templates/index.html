@@ -1,27 +1,34 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Ascii Art Web</title> 
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascii Art Web</title>
+</head>
 <body>
-    <hi>Welcome To Ascii Art Web.</hi>
-
+    <h1>Welcome To Ascii Art Web</h1>
     <form method="post"></form>
-    <textarea 
+
+    <textarea
     name="text"
     rows="8"
     cols="50"
-    placeholder="Please Enter Your Text Here...."
-     ></textarea>
-     <br><br>
+    aria-placeholder="Enter Your Text Here..."></textarea>
+    <br><br>
 
-     <select name="banner">
+    <select name="banner">
         <option value="standard">Standard</option>
         <option value="shadow">Shadow</option>
         <option value="thinkertoy">Thinkertoy</option>
-     </select>
-     <br><br>
+    </select>
+    <br><br>
 
-     <button type="submit">Generate</button>
+    <button type="submit">Generate</button>
+    <div>
+        <p>text: {{.Text}}</p>
+        <p>banner: {{.Banner}}</p>
+        <p>Generate: {{.Result}}</p>
+    </div>
+
 </body>
 </html>
