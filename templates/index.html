@@ -3,32 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ascii Art Web</title>
+    <title>Ascii Web Project</title>
 </head>
 <body>
     <h1>Welcome To Ascii Art Web</h1>
-    <form method="post"></form>
+    <form method="post">
 
-    <textarea
+    <textarea 
     name="text"
     rows="8"
     cols="50"
-    aria-placeholder="Enter Your Text Here..."></textarea>
+    placeholder="Enter Your Text Here..."></textarea>
     <br><br>
 
     <select name="banner">
         <option value="standard">Standard</option>
         <option value="shadow">Shadow</option>
-        <option value="thinkertoy">Thinkertoy</option>
+        <option value="thinkertoy">thinkertoy</option>
     </select>
     <br><br>
 
-    <button type="submit">Generate</button>
-    <div>
-        <p>text: {{.Text}}</p>
-        <p>banner: {{.Banner}}</p>
-        <p>Generate: {{.Result}}</p>
-    </div>
-
+    <button type="submit">Generate</button> 
+    </form>
 </body>
 </html>

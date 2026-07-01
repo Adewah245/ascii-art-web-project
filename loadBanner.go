@@ -10,9 +10,9 @@ var banner = make(map[string]map[rune][]string)
 
 func LoadAllBanner() error {
 	file := map[string]string{
-		"standard":   "banners/standard.txt",
-		"shadow":     "banners/shadow.txt",
-		"thinkertoy": "banners/thinkertoy.txt",
+		"standard":   "banner/standard.txt",
+		"shadow":     "banner/shadow.txt",
+		"thinkertoy": "banner/thinkertoy.txt",
 	}
 	for name, r := range file {
 		m, err := LoadBanner(r)
