@@ -1,16 +1,14 @@
 package main
 
-import (
-	"strings"
-)
+import "strings"
 
-func inputFiles(input string) []string {
+func inputFiles(input string) []string{
 	if input == "" {
-		return []string{}
+		return  []string{}
 	}
 	text := strings.ReplaceAll(input, "\\n", "\n")
 	if text == "\n" {
-		return []string{"\n"}
+		return []string{""}
 	}
 	return strings.Split(text, "\n")
 }

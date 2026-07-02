@@ -1,42 +1,38 @@
 package main
 
-import (
-	"html/template"
-	"net/http"
-)
+import "net/http"
 
-var Tmpl = template.Must(
-	template.ParseFiles("templates/index.html"),
-)
-var Suc = template.Must(
-	template.ParseFiles("templates/sucess.html"),
-)
-
-type Ascii struct {
+type Ascii struct{
 	Result string
 }
-
-func homeHandler(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodGet {
-		Tmpl.ExecuteTemplate(w, "index.html", nil)
+func homePage(w http.ResponseWriter, r *http.Request){
+	if r.Method == http.MethodGet{
+		Tmpl.ExecuteTemplate(w, "form.html", nil)
 		return
 	}
 	if r.Method == http.MethodPost {
-		Text := r.FormValue("text")
-		input := inputFiles(Text)
-		BannerName := r.FormValue("banner")
-		path := "banner/" + BannerName + ".txt"
 
-		data, err := LoadBanner(path)
+		text :=inputFiles(r.FormValue("text"))
+		valid := map[string]bool {
+			"standard": true,
+			"shadow": true,
+			"thinkertoy": true,
+		}
+		bannerName := r.FormValue("banner")
+		if !valid[bannerName] {
+			http.Error(w, "Invalid Banner", http.StatusBadRequest)
+			return
+		}
+		path := "banner/" + bannerName + ".txt"
+		banner, err := LoadBanner(path)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		result := generate(input, data)
+		result := GenerateAscii(text, banner)
 		art := Ascii{
 			Result: result,
 		}
-		Suc.ExecuteTemplate(w, "sucess.html", art)
+		Success.ExecuteTemplate(w, "success.html", art)
 	}
-
 }
